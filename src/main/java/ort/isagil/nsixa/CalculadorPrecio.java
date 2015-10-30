@@ -24,5 +24,11 @@ class CalculadorPrecio {
     int calcular(int imp, int desc) {
         return this.items * this.precio;
     }
+
+    int obtenerImpuesto(String pais) {
+        if (pais.equals("Uruguay"))
+            return 10;
+        return 0;
+    }
     
 }

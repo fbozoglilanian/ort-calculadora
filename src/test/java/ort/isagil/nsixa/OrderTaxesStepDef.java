@@ -3,7 +3,7 @@ package ort.isagil.nsixa;
 import static org.junit.Assert.*;
 import cucumber.api.java.es.*;
 // agregando un comentario
-public class OrderValueStepDef {
+public class OrderTaxesStepDef {
     
     private CalculadorPrecio calc;
     int result;
@@ -15,9 +15,10 @@ public class OrderValueStepDef {
         calc = new CalculadorPrecio();
         calc.setItems(items, precio);
     }
-
-    @Cuando("^calculo el valor de orden sin impuestos (\\d+) ni descuentos (\\d+)$")
-    public void calculo(int imp , int desc) throws Throwable {        
+    
+    @Cuando("^el valor de orden con impuestos para \"(.*?)\" y descuentos (\\d+)$")
+    public void calculo(String pais , int desc) throws Throwable {
+        int imp = calc.obtenerImpuesto(pais);
         result = calc.calcular(imp, desc);
     }
 
